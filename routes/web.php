@@ -35,14 +35,15 @@ Route::group(
     Route::get('/dashboard', '\App\Http\Controllers\HomeController@index')->name('dashboard');
 
     //==============================dashboard============================
-//    Route::group(['namespace' => 'Grades'], function () {
-//        Route::resource('Grades', 'GradeController');
-//    });
+    Route::group(['namespace' => 'Grades'], function () {
+        Route::resource('Grades', '\App\Http\Controllers\Grades\GradeController');
+    });
 
     //==============================Classrooms============================
-//    Route::group(['namespace' => 'Classrooms'], function () {
-//        Route::resource('Classrooms', 'ClassroomController');
-//    });
+    Route::group(['namespace' => 'Classrooms'], function () {
+        Route::resource('Classrooms', '\App\Http\Controllers\ClassroomController');
+    });
+
 
 
 });

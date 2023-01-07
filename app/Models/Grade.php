@@ -1,14 +1,16 @@
 <?php
 
-namespace grade;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
-class Grade extends Model 
+class Grade extends Model
 {
-
+    use HasTranslations;
     protected $table = 'grades';
     public $timestamps = true;
-    protected $fillable = array('Name', 'Notes');
-
+//    protected $fillable = array('Name', 'Notes');
+    protected $guarded=[];
+    public $translatable = ['Name'];
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ClassroomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Classroom $classroom)
     {
         //
     }
@@ -52,10 +52,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Classroom $classroom)
     {
         //
     }
@@ -64,10 +64,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Classroom $classroom)
     {
         //
     }
@@ -75,10 +75,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Classroom $classroom)
     {
         //
     }
