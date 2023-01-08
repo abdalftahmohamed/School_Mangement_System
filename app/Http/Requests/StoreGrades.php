@@ -25,21 +25,19 @@ class StoreGrades extends FormRequest
     public function rules()
     {
         return [
-            'Name' => 'required',
+//            .$this->id ده علشان لما يعمل update علي نفس الاسم مايجبش error
+            'Name' => 'required|unique:grades,name->ar,'.$this->id,
+            'Name_en' => 'required|unique:grades,name->en,'.$this->id,
         ];
     }
 
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    //ده معمول علشان الترجمة للصفحة
     public function messages()
     {
         return [
-
-            'Name.' => trans('validation.required'),
+            'Name.required' => trans('validation.required'),
+            'Name.unique' => trans('validation.unique'),
+            'Name_en.required' => trans('validation.required'),
+            'Name_en.unique' => trans('validation.unique'),
         ];
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -41,7 +40,7 @@ Route::group(
 
     //==============================Classrooms============================
     Route::group(['namespace' => 'Classrooms'], function () {
-        Route::resource('Classrooms', '\App\Http\Controllers\ClassroomController');
+        Route::resource('Classrooms', '\App\Http\Controllers\Classroom\ClassroomController');
     });
 
 

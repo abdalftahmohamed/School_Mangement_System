@@ -42,6 +42,9 @@ class GradeController extends Controller
      */
     public function store(StoreGrades $request)
     {
+//        if(Grade::where('Name->ar',$request->Name_ar)->orwhere('Name->en',$request->Name_en)->exists()){
+//            return redirect()->back()->withErrors(['error','this is repeated']);
+//        }
         try {
             // Retrieve the validated input data...
             $validated = $request->validated();
@@ -53,7 +56,8 @@ class GradeController extends Controller
                 'Notes' => $request->Notes,
             ]);
 
-            toastr()->success(trans('messages.success'));
+//            toastr()->success(trans('messages.success'));
+            session()->flash('Add', trans('notifi.add'));
             return redirect()->route('Grades.index');
 
         } catch (\Exception $e) {
@@ -103,8 +107,9 @@ class GradeController extends Controller
             ]);
 //toastr()->success("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
 
-            toastr()->success(trans('messages.success'));
-            return redirect()->route('Grades.index')->withErrors('تم التعديل','ok');
+//            toastr()->success(trans('messages.success'));
+            session()->flash('Update', trans('notifi.update'));
+            return redirect()->route('Grades.index');
 
         }catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -122,7 +127,8 @@ class GradeController extends Controller
         try {
             $Grades = Grade::findOrFail($request->id);
             $Grades->delete();
-            toastr()->error('hhhhhhhhhhhhh');
+//            toastr()->error('hhhhhhhhhhhhh');
+            session()->flash('delete', trans('notifi.delete'));
             return redirect()->route('Grades.index');
 
         }catch (\Exception $e) {
