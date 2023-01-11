@@ -13,14 +13,15 @@ class Classroom extends Model
     public $translatable =['Name_Class'];
 
     protected $table = 'classrooms';
-//    protected $guarded=[];
-    protected $fillable=['Name_Class','Grade_id'];
+    protected $guarded=[];
+//    protected $fillable=['Name_Class','Grade_id'];
 
     use HasFactory;
 
-    #علشان يعرض ليا البانات بال id
+    // علاقة بين الصفوف المراحل الدراسية لجلب اسم المرحلة في جدول الصفوف
+
     public function Grades()
     {
-        return $this->belongsTo('App\Models\Grade','Grade_id');
+        return $this->belongsTo('App\Models\Grade', 'Grade_id');
     }
 }

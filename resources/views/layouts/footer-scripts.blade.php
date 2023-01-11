@@ -43,3 +43,36 @@
     <script src="{{ URL::asset('assets/js/bootstrap-datatables/ar/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/bootstrap-datatables/ar/dataTables.bootstrap4.min.js') }}"></script>
 @endif
+{{--دي علشان تحديد الكل في الجدول--}}
+<script>
+    function CheckAll(className ,elem) {
+        var elements = document.getElementsByClassName(className);
+        var l = elements.length;
+
+        if (elem.checked) {
+            for (var i = 0; i < l; i++) {
+                elements[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < l; i++) {
+                elements[i].checked = false;
+            }
+        }
+    }
+</script>
+
+{{--علشان يظهرلي المويولة بتاع حذف المحدد في جدول classroom--}}
+<script type="text/javascript">
+    $(function (){
+        $("#btn_delete_all").click(function (){
+            var selected=new Array();
+            $("#datatable input[type=checkbox]:checked").each(function(){
+                selected.push(this.value);
+            });
+            if(selected.length>0){
+                $('#delete_all').modal('show')
+                $('input[id="delete_all_id"]').val(selected);
+            }
+        });
+    });
+</script>

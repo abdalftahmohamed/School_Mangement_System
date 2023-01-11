@@ -7,6 +7,7 @@ use App\Http\Requests\StoreClassroom;
 use App\Http\Requests\StoreGrades;
 use App\Models\Classroom;
 use App\Models\Grade;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
@@ -130,15 +131,51 @@ class ClassroomController extends Controller
     public function destroy(Request $request)
     {
         try {
-            $Classroom = Classroom::findOrFail($request->id);
-            $Classroom->delete();
-//            toastr()->error('hhhhhhhhhhhhh');
-            session()->flash('delete', trans('notifi.delete'));
-            return redirect()->route('Classrooms.index');
+            $my_section_id=Section::where('Class_id',$request->id)->pluck('Class_id');
 
-
+            if ($my_section_id->count()==0){
+                $Classroom = Classroom::findOrFail($request->id);
+                $Classroom->delete();
+                session()->flash('delete', trans('notifi.delete'));
+                return redirect()->route('Classrooms.index');
+            }else
+            {
+                session()->flash('delete', trans('notifi.delete_error_section'));
+                return redirect()->route('Classrooms.index');
+            }
         }catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+
+
+    }
+    public function destroyall(Request $request){
+
+//        explode تستخدم لعمل array لاستخدامها مع wherein
+        try {
+            $delete_all_id= explode(",",$request->delete_all_id);
+            $my_section_id=Section::where('Class_id',$delete_all_id)->pluck('Class_id');
+            if ($my_section_id->count()==0){
+
+                Classroom::wherein('id',$delete_all_id)->delete();
+                session()->flash('delete', trans('notifi.delete'));
+                return redirect()->route('Classrooms.index');
+            }else
+            {
+                session()->flash('delete', trans('notifi.delete_error_section'));
+                return redirect()->route('Classrooms.index');
+            }
+        }catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
+
+
+    }
+    public function filter_classes(Request $request){
+      $Grades=Grade::all();
+      $search=Classroom::select('*')->where('Grade_id','=',$request->Grade_id)->get();
+      return view('pages/My_Classes/My_Classes',compact('Grades'))->withDetails($search);
+
     }
 }

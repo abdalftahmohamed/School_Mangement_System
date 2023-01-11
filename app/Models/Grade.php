@@ -14,4 +14,11 @@ class Grade extends Model
     protected $guarded=[];
     public $translatable = ['Name'];
 
+    // علاقة المراحل الدراسية لجلب الاقسام المتعلقة بكل مرحلة
+
+    public function Sections()
+    {
+        return $this->hasMany('App\Models\Section', 'Grade_id');
+    }
+
 }
