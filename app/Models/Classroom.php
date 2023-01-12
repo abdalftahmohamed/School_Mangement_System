@@ -11,7 +11,6 @@ class Classroom extends Model
     #علشان اعرفو ان انا هاستخدم الترجمة للاسم
     use HasTranslations;
     public $translatable =['Name_Class'];
-
     protected $table = 'classrooms';
     protected $guarded=[];
 //    protected $fillable=['Name_Class','Grade_id'];

@@ -52,6 +52,10 @@ Route::group(
         Route::resource('Sections', '\App\Http\Controllers\Section\SectionController');
         Route::get('/classes/{id}', '\App\Http\Controllers\Section\SectionController@getclasses');
     });
+    //***************************************livewire*********************************
+        Route::get('/test',function(){
+        return view('test_livewire');
+        });
 
 });
 
