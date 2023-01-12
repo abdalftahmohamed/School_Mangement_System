@@ -52,10 +52,11 @@ Route::group(
         Route::resource('Sections', '\App\Http\Controllers\Section\SectionController');
         Route::get('/classes/{id}', '\App\Http\Controllers\Section\SectionController@getclasses');
     });
-    //***************************************livewire*********************************
-        Route::get('/test',function(){
-        return view('test_livewire');
-        });
+
+
+    //==============================livewire_parents============================
+
+    Route::view('add_parent', 'livewire.show_Form')->name('add_parent');
 
 });
 
