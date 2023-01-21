@@ -1,17 +1,9 @@
 <div>
-    @if (!empty($successMessage))
-        <div class="alert alert-success" id="success-alert">
-            <button type="button" class="close" data-dismiss="alert">x</button>
-            {{ $successMessage }}
-        </div>
-    @endif
+    @include('sessions')
 
-    @if ($catchError)
-        <div class="alert alert-danger" id="success-danger">
-            <button type="button" class="close" data-dismiss="alert">x</button>
-            {{ $catchError }}
-        </div>
-    @endif
+          @if($show_table)
+            @include('livewire.Parent_Table')
+          @else
 
 
     <div class="stepwizard">
@@ -54,6 +46,12 @@
                             </div>
                             <br>
 
+{{--                            <div class="form-group">--}}
+{{--                                <img src="{{asset('imgs/'.$post->path)}}" width="130 px" height="130 px">--}}
+{{--                                <input type="file" wire:model="photos" accept="image/*" multiple>--}}
+{{--                            </div>--}}
+                            <br>
+
                             <input type="hidden" wire:model="Parent_id">
 
                             <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right" type="button"
@@ -71,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-
+            @endif
 
 
         </div>

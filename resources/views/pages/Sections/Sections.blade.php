@@ -230,6 +230,20 @@
                                                                                             </div>
                                                                                         </div>
 
+                                                                                        <br>
+                                                                                        <div class="form-group">
+                                                                                            <label for="exampleFormControlSelect2">{{ trans('Sections_trans.Name_Teacher') }}</label>
+                                                                                            <select multiple class="form-control" name="teacher_id[]" style="overflow: auto" id="exampleFormControlSelect2">
+                                                                                                @foreach($list_Sections->Teachers as $teacher)
+                                                                                                    <option selected disabled value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                                                                                @endforeach
+
+                                                                                                @foreach($teachers as $teacher)
+                                                                                                    <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
+
 
                                                                                 </div>
                                                                                 <div class="modal-footer">
@@ -360,8 +374,18 @@
                                         <div class="col">
                                             <label for="inputName"
                                                    class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>
-                                            <select name="Class_id" class="custom-select">
+                                            <select name="Class_id" id="class_name_id" class="custom-select">
 
+                                            </select>
+                                        </div>
+
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect2">{{ trans('Sections_trans.Name_Teacher') }}</label>
+                                            <select multiple class="form-control" name="teacher_id[]" style="overflow: auto" id="exampleFormControlSelect2">
+                                                @foreach($teachers as $teacher)
+                                                <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -394,9 +418,11 @@
                                 type: "GET",
                                 dataType: "json",
                                 success: function (data) {
-                                    $('select[name="Class_id"]').empty();
+                                    // $('select[name="Class_id"]').empty();
+                                    $("#class_name_id").empty();
                                     $.each(data, function (key, value) {
-                                        $('select[name="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
+                                        $("#class_name_id").append('<option value="' + key + '">' + value + '</option>');
+                                        // console.log($("#class_name_id"));
                                     });
                                 },
                             });

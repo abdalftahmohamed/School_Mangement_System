@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('parent_attachments', function (Blueprint $table) {
+        Schema::create('teacher_section', function (Blueprint $table) {
             $table->id();
-            $table->string('file_name')->nullable();
-            $table->unsignedBigInteger('parent_id');
-            $table->foreign('parent_id')->references('id')->on('my__parents')->onDelete('cascade');
+            $table->unsignedBigInteger('section_id');
+            $table->unsignedBigInteger('teacher_id');
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parent_attachements');
+        Schema::dropIfExists('teacher_section');
     }
 };

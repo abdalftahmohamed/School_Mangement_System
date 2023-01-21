@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSection;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -18,9 +19,12 @@ class SectionController extends Controller
      */
     public function index()
     {
+//$sec=Section::find(7);
+//return $sec->Teachers;
         $Grades = Grade::with(['Sections'])->get();
         $list_Grades = Grade::all();
-        return view('pages.Sections.Sections',compact('Grades','list_Grades'));
+        $teachers=Teacher::all();
+        return view('pages.Sections.Sections',compact('Grades','list_Grades','teachers'));
 
     }
 
@@ -42,6 +46,7 @@ class SectionController extends Controller
      */
     public function store(StoreSection $request)
     {
+
         $request->validated();
         $Sections = new Section();
 
@@ -50,7 +55,7 @@ class SectionController extends Controller
         $Sections->Class_id = $request->Class_id;
         $Sections->Status = 1;
         $Sections->save();
-
+        $Sections->Teachers()->attach($request->teacher_id);
         session()->flash('Add', trans('notifi.add'));
         return redirect()->route('Sections.index');
     }
@@ -79,6 +84,13 @@ class SectionController extends Controller
             } else {
                 $Sections->Status = 2;
             }
+               //important to update
+            if(isset($request->teacher_id)) {
+                $Sections->Teachers()->sync($request->teacher_id);
+            } else {
+                $Sections->Teachers()->sync(array());
+            }
+
             $Sections->save();
 
             session()->flash('Update', trans('notifi.update'));

@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BloodTableSeeder::class);
         $this->call(NationalitiesTableSeeder::class);
         $this->call(religionTableSeeder::class);
+        $this->call(SpecializationsSeeder::class);
+        $this->call(GenderSeeder::class);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
