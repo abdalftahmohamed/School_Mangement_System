@@ -58,10 +58,15 @@ Route::group(
 
     Route::view('add_parent', 'livewire.show_Form')->name('add_parent');
 
-
     //==============================Teachers=====================================
     Route::group(['namespace' => 'Teachers'], function () {
         Route::resource('Teachers', '\App\Http\Controllers\Teacher\TeacherController');
+    });
+    //==============================Students=====================================
+    Route::group(['namespace' => 'Students'], function () {
+        Route::resource('Students', '\App\Http\Controllers\Students\StudentController');
+        Route::get('/Get_classrooms/{id}', '\App\Http\Controllers\Students\StudentController@Get_classrooms');
+        Route::get('/Get_Sections/{id}', '\App\Http\Controllers\Students\StudentController@Get_Sections');
     });
 
 });
