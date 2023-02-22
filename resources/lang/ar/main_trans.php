@@ -17,6 +17,7 @@ return [
     'Student_information'=>'معلومات الطلاب',
     'add_student'=>'اضافة طالب جديد',
     'list_students'=>'قائمة الطلاب',
+    'Student_Edit'=>'تعديل قائمــة الطالب',
     'Students_Promotions'=>'ترقية الطلاب',
     'add_Promotion'=>'اضافة ترقية جديدة',
     'list_Promotions'=>'قائمة الترقيات',

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class StoreStudentsRequest extends FormRequest
 {
@@ -26,8 +27,8 @@ class StoreStudentsRequest extends FormRequest
         return [
             'name_ar' => 'required',
             'name_en' => 'required',
-            'email' => 'required|email|unique:students,email',
-            'password' => 'required|string|min:6|max:10',
+            'email' => 'required|email|unique:students,email,'.$this->id,
+            'password' => 'required|string|min:6|max:100',
             'gender_id' => 'required',
             'nationalitie_id' => 'required',
             'blood_id' => 'required',

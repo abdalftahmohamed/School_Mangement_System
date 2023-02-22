@@ -15,6 +15,7 @@ return [
     'List_sections'=>'List Sections',
     'students'=>'Students',
     'add_student'=>'Add student',
+    'Student_Edit'=>'Student_Edit',
     'list_students'=>'list Students',
     'Students_Promotions'=>'Students Promotions',
     'information_student'=>'Information Students',

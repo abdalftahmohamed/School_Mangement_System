@@ -19,51 +19,11 @@
 
     <div class="row" >
 
-
-        @if ($errors->any())
-            <div class="error">{{ $errors->first('Name') }}</div>
-        @endif
-
-            @if (session()->has('Add'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('Add') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-            @if (session()->has('Update'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('Update') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-            @if (session()->has('delete'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('delete') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-
-
-
         <div class="col-xl-12 mb-30" >
             <div class="card card-statistics h-100">
                 <div class="card-body">
+                    @include('sessions')
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
 
                     <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
                         {{ trans('Grades_trans.add_Grade') }}
@@ -231,11 +191,13 @@
                                         :</label>
                                     <input id="Name" type="text" name="Name" class="form-control">
                                 </div>
+
                                 <div class="col">
                                     <label for="Name_en" class="mr-sm-2">{{ trans('Grades_trans.stage_name_en') }}
                                         :</label>
                                     <input type="text" class="form-control" name="Name_en">
                                 </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">{{ trans('Grades_trans.Notes') }}
