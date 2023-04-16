@@ -73,6 +73,11 @@ Route::group(
         Route::post('Delete_attachment', '\App\Http\Controllers\Students\StudentController@Delete_attachment')->name('Delete_attachment');
     });
 
+    //==============================Promotion Students ============================
+    Route::group(['namespace' => 'Students'], function () {
+        Route::resource('Promotion', '\App\Http\Controllers\Students\PromotionController');
+    });
+
 });
 
 
