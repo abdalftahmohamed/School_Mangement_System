@@ -37,7 +37,8 @@ return [
     'Settings'=>'الاعدادات',
     'Users'=>'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
-    'Name_Programer' => 'عبدو شـــــــاهين'
+    'Name_Programer' => 'عبدو شـــــــاهين',
+    'management_pormotion'=>'ادارة ترقية الطلاب'
 
 
 ];

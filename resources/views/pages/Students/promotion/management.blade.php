@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
 @section('title')
     {{trans('main_trans.list_students')}}
 @stop
@@ -21,7 +20,7 @@
                     <div class="col-xl-12 mb-30">
                         <div class="card card-statistics h-100">
                             <div class="card-body">
-
+@include('sessions')
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete_all">
                                    تراجع الكل
                                 </button>

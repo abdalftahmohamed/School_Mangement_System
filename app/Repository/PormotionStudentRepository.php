@@ -9,44 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class PormotionStudentRepository{
 
-//    public function show($id) : Category
-//    {
-//        return Category::query()->findOrFail($id);
-//    }
-//
-//    public function  store(array $attributes, ?Closure $func = null): Category
-//    {
-//        return DB::transaction(function () use ($attributes, $func) {
-//
-//            return tap(Category::query()->create($attributes), $func);
-//
-//        });
-//    }
-//
-//    public function update($id, $attributes,?Closure $func = null) : Category
-//    {
-//        return DB::transaction(function () use ($id, $attributes, $func)  {
-//            $oldModel = Category::query()->where('id', $id)->firstOrFail();
-//            $oldModel->update($attributes);
-//            $oldModel->refresh();
-//            tap($oldModel, $func);
-//            return $oldModel;
-//        });
-//    }
-//
-//    public function destroy(int $id)
-//    {
-//        $model = Category::query()->where('id', $id)->first();
-//        try {
-//
-//            $model->delete();
-//            return true;
-//        } catch (Throwable $e) {
-//            Log::error($e->getMessage());
-//            throw new \Exception('Model does not Exist', 10);
-//        }
-//    }
-
     public function index()
     {
         $Grades = Grade::all();
@@ -98,7 +60,7 @@ class PormotionStudentRepository{
 
             }
             DB::commit();
-            toastr()->success(trans('messages.success'));
+            session()->flash('Add', trans('notifi.add'));
             return redirect()->back();
 
         } catch (\Exception $e) {
@@ -108,6 +70,60 @@ class PormotionStudentRepository{
 
 
 
-}
+    }
+
+
+    public function destroy($request){
+        DB::beginTransaction();
+
+        try {
+
+            if ($request->page_id ==1){
+                $pormotions=Promotion::all();
+
+                #update table of students
+
+                foreach ($pormotions as $pormotion){
+                  $ids = explode(',',$pormotion->student_id);
+                  student::whereIn('id', $ids)
+                      ->update([
+                          'Grade_id'=>$pormotion->from_grade,
+                          'Classroom_id'=>$pormotion->from_Classroom,
+                          'section_id'=>$pormotion->from_section,
+                          'academic_year'=>$pormotion->academic_year,
+                      ]);
+
+                  #delete model of pormotions tables
+                  Promotion::truncate();
+
+                }
+                DB::commit();
+                session()->flash('delete', trans('notifi.delete'));
+                return redirect()->back();
+            }else{
+                $pormotion = Promotion::findorfail($request->id);
+
+                #update table of students
+                    $ids = explode(',',$pormotion->student_id);
+                    student::where('id', $ids)
+                        ->update([
+                            'Grade_id'=>$pormotion->from_grade,
+                            'Classroom_id'=>$pormotion->from_Classroom,
+                            'section_id'=>$pormotion->from_section,
+                            'academic_year'=>$pormotion->academic_year,
+                        ]);
+
+                    #delete from pormotions tables
+                    Promotion::destroy($request->id);
+                DB::commit();
+                session()->flash('delete', trans('notifi.delete'));
+                return redirect()->back();
+            }
+
+        }catch (\Exception $e) {
+            DB::rollback();
+            return false;
+    }
+    }
 
 }

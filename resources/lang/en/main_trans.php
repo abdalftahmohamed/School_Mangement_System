@@ -34,7 +34,9 @@ return [
     'Settings'=>'Settings',
     'Users'=>'Users',
     'Copyright' => 'Copyright',
-    'Name_Programer' => 'Abdo Shahin All Rights Reserved'
+    'Name_Programer' => 'Abdo Shahin All Rights Reserved',
+    'management_pormotion'=>'management pormotion'
+
 
 
 ];

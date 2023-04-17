@@ -23,6 +23,8 @@ class SectionsTableSeeder extends Seeder
             ['en' => 'a', 'ar' => 'ا'],
             ['en' => 'b', 'ar' => 'ب'],
             ['en' => 'c', 'ar' => 'ت'],
+            ['en' => 'd', 'ar' => 'غ'],
+            ['en' => 'c', 'ar' => 'إ'],
         ];
 
         foreach ($Sections as $section) {

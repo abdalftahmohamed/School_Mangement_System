@@ -14,12 +14,13 @@
 @endsection
 @section('content')
     <!-- row -->
+
     <div class="row">
 
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-
+                @include('sessions')
                     @if (Session::has('error_promotions'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>{{Session::get('error_promotions')}}</strong>

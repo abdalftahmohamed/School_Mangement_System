@@ -26,6 +26,10 @@ class PormotionService
         return $this->repository->store($request);
     }
 
+    public function showdestroy($request)
+    {
+        return $this->repository->destroy($request);
+    }
 
 //    public function save($attributes)
 //    {

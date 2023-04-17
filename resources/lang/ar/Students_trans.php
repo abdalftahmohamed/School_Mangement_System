@@ -31,6 +31,7 @@ return [
     'created_at' => 'تاريخ الاضافة',
     'Download' => 'تحميل',
     'delete' => 'حذف',
+    'the current year'=>'السنة الدراسية الحالية'
 
 
 

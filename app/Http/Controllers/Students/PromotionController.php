@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
 use App\Models\Promotion;
+use App\Models\Student;
 use App\Repository\PormotionStudentRepository;
 use App\services\PormotionService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PromotionController extends Controller
 {
@@ -35,9 +37,7 @@ class PromotionController extends Controller
 
     public function store(Request $request)
     {
-//        return $this->service->showstore();
-        return $request;
-
+        return $this->service->showstore($request);
     }
 
 
@@ -58,8 +58,8 @@ class PromotionController extends Controller
     }
 
 
-    public function destroy(Promotion $promotion)
+    public function destroy(Promotion $promotion ,Request $request)
     {
-        //
+        return $this->service->showdestroy($request);
     }
 }
