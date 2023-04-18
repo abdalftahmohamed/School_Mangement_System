@@ -35,8 +35,9 @@ return [
     'Users'=>'Users',
     'Copyright' => 'Copyright',
     'Name_Programer' => 'Abdo Shahin All Rights Reserved',
-    'management_pormotion'=>'management pormotion'
-
+    'management_pormotion'=>'Management pormotion',
+    'management_Graduated'=>'Management Graduated',
+    'add_graduated'=>'Add New Graduate'
 
 
 ];

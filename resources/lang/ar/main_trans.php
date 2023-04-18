@@ -38,7 +38,10 @@ return [
     'Users'=>'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
     'Name_Programer' => 'عبدو شـــــــاهين',
-    'management_pormotion'=>'ادارة ترقية الطلاب'
+    'management_pormotion'=>'ادارة ترقية الطلاب',
+    'management_Graduated'=>'إدارة الخريجين',
+    'add_graduated'=>'إضافة خريج جديد'
+
 
 
 ];

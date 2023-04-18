@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Promotion;
 use App\Models\Student;
 use App\Repository\PormotionStudentRepository;
-use App\services\PormotionService;
+use App\services\StudentGraduatedService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,9 +14,9 @@ class PromotionController extends Controller
 {
 
     private PormotionStudentRepository $repository;
-    private PormotionService $service;
+    private PormotionStudentRepository $service;
 
-    function __construct(PormotionService $service){
+    function __construct(PormotionStudentRepository $service){
         $this->service = $service;
 
 //        $this->repository = $this->service->getRepository();
@@ -25,26 +25,23 @@ class PromotionController extends Controller
 
     public function index()
     {
-        return $this->service->showindex();
+        return $this->service->index();
     }
 
 
     public function create()
     {
-        return $this->service->showcreate();
+        return $this->service->create();
     }
 
 
     public function store(Request $request)
     {
-        return $this->service->showstore($request);
+        return $this->service->store($request);
     }
 
 
-    public function show(Promotion $promotion)
-    {
-        //
-    }
+
 
 
     public function edit(Promotion $promotion)
@@ -60,6 +57,6 @@ class PromotionController extends Controller
 
     public function destroy(Promotion $promotion ,Request $request)
     {
-        return $this->service->showdestroy($request);
+        return $this->service->destroy($request);
     }
 }

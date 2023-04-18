@@ -35,6 +35,17 @@
     </div>
 @endif
 
+
+@if (session()->has('graduated'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ session()->get('graduated') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+
+
 @if(session()->has('error'))
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>{{ session()->get('error') }}</strong>
@@ -50,6 +61,16 @@
     </div>
 @endif
 
+
+
+@if (Session::has('error_Graduated'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{Session::get('error_Graduated')}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 {{--@if ($catchError)--}}
 {{--    <div class="alert alert-danger" id="success-danger">--}}
 {{--        <button type="button" class="close" data-dismiss="alert">x</button>--}}
