@@ -66,6 +66,8 @@ Route::group(
     Route::group(['namespace' => 'Students'], function () {
         Route::resource('Students', '\App\Http\Controllers\Students\StudentController');
         Route::resource('Graduated', '\App\Http\Controllers\Students\GraduatedController');
+        Route::resource('Fees', '\App\Http\Controllers\Students\FeesController');
+        Route::resource('Fees_Invoices', '\App\Http\Controllers\Students\FeeInvoiceController');
         Route::get('/Get_classrooms/{id}', '\App\Http\Controllers\Students\StudentController@Get_classrooms');
         Route::get('/Get_Sections/{id}', '\App\Http\Controllers\Students\StudentController@Get_Sections');
 

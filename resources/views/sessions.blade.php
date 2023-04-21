@@ -18,9 +18,11 @@
         </button>
     </div>
 @endif
-@if (session()->has('Update'))
+
+
+@if (session()->has('update'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{ session()->get('Update') }}</strong>
+        <strong>{{ session()->get('update') }}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
