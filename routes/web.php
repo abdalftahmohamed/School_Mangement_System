@@ -4,6 +4,8 @@ use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Quizzes\QuestionController;
+use App\Http\Controllers\Quizzes\QuizzeController;
 use App\Http\Controllers\Section\SectionController;
 use App\Http\Controllers\Students\AttendanceController;
 use App\Http\Controllers\Students\FeeInvoiceController;
@@ -47,7 +49,7 @@ Route::group(
     ], function () {
 
     //==============================dashboard============================
-    Route::get('/dashboard', [HomeController::class,'index'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
     //==============================dashboard============================
     Route::group([], function () {
@@ -57,15 +59,15 @@ Route::group(
     //==============================Classrooms============================
     Route::group([], function () {
         Route::resource('Classrooms', ClassroomController::class);
-        Route::DELETE('destroyall', [ClassroomController::class,'destroyall'])->name('destroyall');
-        Route::post('filter_classes', [ClassroomController::class,'filter_classes'])->name('filter_classes');
+        Route::DELETE('destroyall', [ClassroomController::class, 'destroyall'])->name('destroyall');
+        Route::post('filter_classes', [ClassroomController::class, 'filter_classes'])->name('filter_classes');
 
     });
 
     //==============================Sections============================
     Route::group([], function () {
         Route::resource('Sections', SectionController::class);
-        Route::get('/classes/{id}', [SectionController::class,'getclasses']);
+        Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
     });
 
 
@@ -83,9 +85,18 @@ Route::group(
         Route::resource('subjects', SubjectController::class);
     });
 
-    //==============================Subjects=====================================
+    //==============================Exams=====================================
     Route::group([], function () {
         Route::resource('Exams', ExamController::class);
+    });
+    //==============================quizzes=====================================
+    Route::group([], function () {
+        Route::resource('Quizzes', QuizzeController::class);
+    });
+
+    //==============================questions=====================================
+    Route::group([], function () {
+        Route::resource('questions', QuestionController::class);
     });
     //==============================Students=====================================
     Route::group([], function () {
@@ -98,14 +109,14 @@ Route::group(
         Route::resource('ProcessingFee', ProcessingFeeController::class);
         Route::resource('Payment_students', PaymentStudentController::class);
         Route::resource('Attendance', AttendanceController::class);
-        Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
-        Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);
-        Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
-        Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');
-        Route::post('Delete_attachment', [StudentController::class,'Delete_attachment'])->name('Delete_attachment');
+        Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
+        Route::get('/Get_Sections/{id}', [StudentController::class, 'Get_Sections']);
+        Route::post('Upload_attachment', [StudentController::class, 'Upload_attachment'])->name('Upload_attachment');
+        Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class, 'Download_attachment'])->name('Download_attachment');
+        Route::post('Delete_attachment', [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
     });
 
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
