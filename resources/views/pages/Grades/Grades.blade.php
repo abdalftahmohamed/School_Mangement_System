@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('css')
-{{--    /*@toastr_css*/--}}
+
 
     @section('title')
         {{ trans('Grades_trans.title_page') }}

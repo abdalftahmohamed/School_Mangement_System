@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('css')
-{{--    /*@toastr_css*/--}}
+
 @section('title')
     {{ trans('My_Classes_trans.title_page') }}
 @stop
@@ -22,39 +22,7 @@
 
             {{--/***************************--}}
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            @if (session()->has('Add'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('Add') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-            @if (session()->has('Update'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('Update') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-            @if (session()->has('delete'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('delete') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
+      @include('sessions')
 
 
             <button type="button" class="btn btn-success x-small" data-toggle="modal" data-target="#exampleModal">

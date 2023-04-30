@@ -115,6 +115,10 @@
                         <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('Fees.index')}}">الرسوم الدراسية</a> </li>
                             <li> <a href="{{route('Fees_Invoices.index')}}">الفواتير</a> </li>
+                            <li> <a href="{{route('receipt_students.index')}}">سندات القبض</a> </li>
+                            <li> <a href="{{route('ProcessingFee.index')}}">استبعاد رسوم</a> </li>
+                            <li> <a href="{{route('Payment_students.index')}}">سندت الصرف</a> </li>
+
                         </ul>
                     </li>
 
@@ -126,9 +130,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                            <li> <a href="{{route('Attendance.index')}}">قائمة الطلاب</a> </li>
                         </ul>
                     </li>
 
