@@ -4,6 +4,7 @@ use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OnlineClasse\OnlineClasseController;
 use App\Http\Controllers\Quizzes\QuestionController;
 use App\Http\Controllers\Quizzes\QuizzeController;
 use App\Http\Controllers\Section\SectionController;
@@ -98,6 +99,17 @@ Route::group(
     Route::group([], function () {
         Route::resource('questions', QuestionController::class);
     });
+
+    //==============================online_classes=====================================
+    Route::group([], function () {
+        Route::resource('online_classes', OnlineClasseController::class);
+        Route::get('/indirect',[App\Http\Controllers\OnlineClasse\OnlineClasseController::class,'indirectCreate'])->name('indirect.create');
+        Route::post('/indirect',[App\Http\Controllers\OnlineClasse\OnlineClasseController::class,'storeIndirect'])->name('indirect.store');
+    });
+
+
+
+
     //==============================Students=====================================
     Route::group([], function () {
         Route::resource('Students', StudentController::class);
