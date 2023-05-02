@@ -4,6 +4,7 @@ use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Library\LibraryController;
 use App\Http\Controllers\OnlineClasse\OnlineClasseController;
 use App\Http\Controllers\Quizzes\QuestionController;
 use App\Http\Controllers\Quizzes\QuizzeController;
@@ -108,6 +109,11 @@ Route::group(
     });
 
 
+    //==============================Library=====================================
+    Route::group([], function () {
+        Route::resource('library', LibraryController::class);
+        Route::get('download_file/{filename}',[LibraryController::class,'download'])->name('downloadAttachment');
+    });
 
 
     //==============================Students=====================================

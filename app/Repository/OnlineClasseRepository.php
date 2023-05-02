@@ -9,7 +9,7 @@ use MacsiDigital\Zoom\Facades\Zoom;
 
 class OnlineClasseRepository
 {
-use MeetingZoomTrait;
+    use MeetingZoomTrait;
     public function index()
     {
         $online_classes = online_classe::all();

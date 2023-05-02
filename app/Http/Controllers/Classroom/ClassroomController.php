@@ -62,7 +62,6 @@ class ClassroomController extends Controller
                 $my_Classes->Grade_id=$List_Class['Grade_id'];
                 $my_Classes->save();
             }
-//            toastr()->success(trans('messages.success'));
             session()->flash('Add', trans('notifi.add'));
             return redirect()->route('Classrooms.index');
 
