@@ -37,7 +37,7 @@ class LibraryRepository
             $books->section_id = $request->section_id;
             $books->teacher_id = $request->teacher_id;
             $books->save();
-            $this->uploadFile($request,'file_name');
+            $this->uploadFile($request,'file_name','library');
 
             session()->flash('Add', trans('notifi.add'));
             return redirect()->route('library.index');
@@ -86,10 +86,11 @@ class LibraryRepository
 
     public function destroy($request)
     {
-        $this->deleteFile($request->file_name);
-        library::destroy($request->id);
-        session()->flash('delete', trans('notifi.delete'));
-        return redirect()->route('library.index');
+        return $request->file_name;
+//        $this->deleteFile('library',$request->file_name);
+//        library::destroy($request->id);
+//        session()->flash('delete', trans('notifi.delete'));
+//        return redirect()->route('library.index');
     }
 
     public function download($filename)
