@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GenderSeeder::class);
         $this->call(ParentsTableSeeder::class);
         $this->call(StudentsTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
     }
 }
