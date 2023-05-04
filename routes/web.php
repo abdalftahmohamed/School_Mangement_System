@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\Grades\GradeController;
@@ -35,13 +36,26 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-    Route::group(['middleware' => ['guest']], function () {
 
-    Route::get('/', function () {
-        return view('auth.login');
-    });
+     Route::get('/', [HomeController::class,'index'])->name('selection');
 
-    });
+    Route::get('/login/{type}',[LoginController::class,'loginForm'])->middleware('guest')->name('login.show');
+
+    Route::post('/login',[LoginController::class,'login'])->name('login');
+
+    Route::get('/logout/{type}', [LoginController::class,'logout'])->name('logout');
+
+
+
+
+
+//    Route::group(['middleware' => ['guest']], function () {
+//
+//    Route::get('/', function () {
+//        return view('auth.login');
+//    });
+//
+//    });
 
 
     //==============================Translate all pages============================
@@ -52,7 +66,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
         ], function () {
 
     //==============================dashboard============================
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     //==============================dashboard============================
 
@@ -124,4 +138,4 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 });
 
 
-require __DIR__ . '/auth.php';
+//require __DIR__ . '/auth.php';
