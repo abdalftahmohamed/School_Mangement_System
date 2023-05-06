@@ -128,8 +128,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     Route::resource('ProcessingFee', ProcessingFeeController::class);
     Route::resource('Payment_students', PaymentStudentController::class);
     Route::resource('Attendance', AttendanceController::class);
-    Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
-    Route::get('/Get_Sections/{id}', [StudentController::class, 'Get_Sections']);
     Route::post('Upload_attachment', [StudentController::class, 'Upload_attachment'])->name('Upload_attachment');
     Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class, 'Download_attachment'])->name('Download_attachment');
     Route::post('Delete_attachment', [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');

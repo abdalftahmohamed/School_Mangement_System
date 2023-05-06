@@ -132,6 +132,9 @@
                                 </div>
                             </div>
 
+
+
+
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="parent_id">{{trans('Students_trans.parent')}} : <span class="text-danger">*</span></label>
