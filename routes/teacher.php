@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Teacher\dashboard\ProfileController;
 use App\Http\Controllers\Teacher\dashboard\QuestionController;
 use App\Http\Controllers\Teacher\dashboard\QuizzController;
 use App\Http\Controllers\Teacher\dashboard\StudentController;
@@ -45,9 +46,11 @@ Route::group(
     Route::get('attendance_report', [StudentController::class, 'attendanceReport'])->name('attendance.report');
     Route::post('attendance_report', [StudentController::class, 'attendanceSearch'])->name('attendance.search');
     Route::resource('quizzes', QuizzController::class);
-
-
     Route::resource('questions', QuestionController::class);
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile.show');
+    Route::post('profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::get('Calendar/{id}',[\App\Http\Livewire\Calendar::class,'delete'])->name('Calendar');
+
 
 
 });

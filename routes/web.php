@@ -103,11 +103,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     //==============================questions=====================================
     Route::resource('questions', QuestionController::class);
 
-
-    //==============================online_classes=====================================
-    Route::resource('online_classes', OnlineClasseController::class);
-    Route::get('/indirect', [App\Http\Controllers\OnlineClasse\OnlineClasseController::class, 'indirectCreate'])->name('indirect.create');
-    Route::post('/indirect', [App\Http\Controllers\OnlineClasse\OnlineClasseController::class, 'storeIndirect'])->name('indirect.store');
+        //==============================questions=====================================
+//        Route::resource('profile', \App\Http\Controllers\ProfileController::class);
 
 
     //==============================Library=====================================

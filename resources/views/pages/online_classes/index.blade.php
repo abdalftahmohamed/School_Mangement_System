@@ -48,7 +48,7 @@
                                             <td>{{$online_classe->grade->Name}}</td>
                                             <td>{{ $online_classe->classroom->Name_Class }}</td>
                                             <td>{{$online_classe->section->Name_Section}}</td>
-                                                <td>{{$online_classe->user->name}}</td>
+                                                <td>{{$online_classe->created_by}}</td>
                                                 <td>{{$online_classe->topic}}</td>
                                                 <td>{{$online_classe->start_at}}</td>
                                                 <td>{{$online_classe->duration}}</td>

@@ -12,7 +12,7 @@ class OnlineClasseRepository
     use MeetingZoomTrait;
     public function index()
     {
-        $online_classes = online_classe::all();
+        $online_classes = online_classe::where('created_by',auth()->user()->email)->get();
         return view('pages.online_classes.index', compact('online_classes'));
     }
 
@@ -41,7 +41,7 @@ class OnlineClasseRepository
                 'Grade_id' => $request->Grade_id,
                 'Classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
-                'user_id' => auth()->user()->id,
+                'created_by' => auth()->user()->email,
                 'meeting_id' => $meeting->id,
                 'topic' => $request->topic,
                 'start_at' => $request->start_time,
@@ -69,7 +69,8 @@ class OnlineClasseRepository
                 'Grade_id' => $request->Grade_id,
                 'Classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
-                'user_id' => auth()->user()->id,
+//                'user_id' => auth()->user()->id,
+                'created_by' => auth()->user()->email,
                 'meeting_id' => $request->meeting_id,
                 'topic' => $request->topic,
                 'start_at' => $request->start_time,
@@ -84,26 +85,6 @@ class OnlineClasseRepository
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
 
-    }
-
-
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update($request, $id)
-    {
-        //
     }
 
 

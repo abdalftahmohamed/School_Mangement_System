@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\ajaxController;
+use App\Http\Controllers\OnlineClasse\OnlineClasseController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,11 @@ Route::group(
     Route::get('/Get_classrooms/{id}', [ajaxController::class,'getClassrooms']);
     Route::get('/Get_Sections/{id}', [ajaxController::class,'Get_Sections']);
 
+
+    //==============================online_classes=====================================
+    Route::resource('online_classes', OnlineClasseController::class);
+    Route::get('/indirect', [OnlineClasseController::class, 'indirectCreate'])->name('indirect.create');
+    Route::post('/indirect', [OnlineClasseController::class, 'storeIndirect'])->name('indirect.store');
 
 });
 
